@@ -1,7 +1,7 @@
 name: Fetch Braganca Feeds
 on:
   schedule:
-    - cron: '*/30 * * * *'   # a cada 30 min (UTC)
+    - cron: '*/30 * * * *'      # a cada 30 min (UTC)
   workflow_dispatch:
 
 jobs:
@@ -11,13 +11,15 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+
       - run: npm install --no-audit --no-fund
       - run: mkdir -p data
       - run: npm run build:feeds
+
       - name: Commit feeds
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
