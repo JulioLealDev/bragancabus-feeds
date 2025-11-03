@@ -1,0 +1,12 @@
+{
+  "name": "bragancabus-feeds",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build:feeds": "node scripts/build_feeds.mjs"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "undici": "^6.19.8"
+  }
+}

@@ -1,0 +1,28 @@
+name: Fetch Braganca Feeds
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # a cada 30 minutos
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # permite commit pelo GITHUB_TOKEN
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: mkdir -p data
+      - run: npm run build:feeds
+      - name: Commit feeds
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/news.json data/events.json
+            git commit -m "chore: update feeds ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
+            git push
+          fi
