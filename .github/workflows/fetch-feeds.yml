@@ -6,26 +6,32 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, home]  # usa seu runner
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - run: npm install --no-audit --no-fund
-      - run: mkdir -p data
-      - run: npm run build:feeds
-
-      - name: Commit feeds
+      - name: Install deps
+        run: npm install --no-audit --no-fund
+        shell: powershell
+      - name: Build feeds
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/news.json data/events.json
-            git commit -m "chore: update feeds ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
+          if (!(Test-Path -Path "data")) { New-Item -Path "data" -ItemType Directory | Out-Null }
+          npm run build:feeds
+        shell: powershell
+      - name: Commit feeds
+        shell: powershell
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/news.json data/events.json
+          if ((git status --porcelain) -ne $null) {
+            $ts = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+            git commit -m "chore: update feeds ($ts)"
             git push
-          fi
+          } else {
+            Write-Host "Nada para comitar."
+          }
