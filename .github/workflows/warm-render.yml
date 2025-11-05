@@ -1,0 +1,57 @@
+name: Warm Render (Lisbon hours, Mon–Fri)
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # dispara a cada 10 min (UTC)
+  workflow_dispatch:
+
+concurrency:
+  group: warm-render
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Lisbon weekday/window and ping Render
+        env:
+          TARGET_URL: https://bus-app-backend-gd3a.onrender.com/api/health
+          TZ_AREA: Europe/Lisbon
+        run: |
+          # Data/hora local em Lisboa
+          NOW=$(TZ=$TZ_AREA date +%H:%M)
+          DOW=$(TZ=$TZ_AREA date +%u)   # 1=Seg ... 7=Dom
+          echo "Lisbon now: $NOW (DOW=$DOW)"
+
+          # pula fins de semana (6=Sábado, 7=Domingo)
+          if [ "$DOW" -ge 6 ]; then
+            echo "Weekend in Lisbon → skipping."
+            exit 0
+          fi
+
+          in_range() {
+            # true se HH:MM ∈ [inicio, fim]
+            local t="$1" a="$2" b="$3"
+            [[ "$t" > "$a" && "$t" < "$b" ]] || [[ "$t" == "$a" || "$t" == "$b" ]]
+          }
+
+          if in_range "$NOW" "07:30" "09:30" || \
+             in_range "$NOW" "12:00" "15:00" || \
+             in_range "$NOW" "17:00" "19:00"; then
+            echo "Inside weekday window → pinging $TARGET_URL"
+          else
+            echo "Outside weekday windows → skipping."
+            exit 0
+          fi
+
+          CODE=$(curl -sS -o /dev/null -w "%{http_code}" \
+                 --retry 2 --retry-all-errors --max-time 20 \
+                 "$TARGET_URL")
+
+          echo "HTTP $CODE from $TARGET_URL"
+          if [ "$CODE" -ge 200 ] && [ "$CODE" -lt 400 ]; then
+            echo "Healthcheck OK"
+          else
+            echo "Non-2xx/3xx response" >&2
+            exit 1
+          fi
