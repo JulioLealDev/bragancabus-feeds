@@ -1,0 +1,18 @@
+{
+  "widgetId": 15,
+  "fetchedAt": "2025-11-05T14:37:43.132Z",
+  "items": [
+    {
+      "title": "Passeios Pedestres 2025",
+      "link": "https://www.cm-braganca.pt/visitar/agenda-de-eventos/evento/passeios-pedestres-2025",
+      "dateText": "17 Mai a 31 Dez '25",
+      "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/event/image/1364/folheto_2025_1_600_849.jpg"
+    },
+    {
+      "title": "Concursos de Natal 2025",
+      "link": "https://www.cm-braganca.pt/visitar/agenda-de-eventos/evento/concursos-de-natal-2025",
+      "dateText": "01 Out a 31 Dez '25",
+      "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/event/image/1399/487808619_1084597540361021_967686922245296312_n_1_600_849.jpg"
+    }
+  ]
+}
