@@ -1,0 +1,46 @@
+Este repositório contém duas automações (GitHub Actions) que suportam o ecossistema do Bragança Bus:
+
+* Fetch Braganca Feeds: gera os ficheiros data/news.json e data/events.json a partir do site da Câmara Municipal de Bragança (scraping), com commit automático no repositório.
+
+* Warm Render (Lisbon hours, Mon–Fri): faz healthcheck periódico ao backend no Render para mantê-lo “acordado” nos horários úteis.
+
+//// Fetch Braganca Feeds
+
+Corre o script scripts/build_feeds.mjs, que:
+
+lê as páginas da Câmara, extrai eventos/notícias e escreve data/events.json e data/news.json. comita e faz push.
+
+Runner: self-hosted (máquina local), para contornar bloqueios do site:
+
+* Acessar projeto actions-runner
+* rodar a runner com o comando: .\run.cmd
+
+após a runner responder "Listening for Jobs", executar manualmente a action (workflow_dispatch):
+
+* ir até: https://github.com/JulioLealDev/bragancabus-feeds/actions/workflows/fetch-feeds.yml
+* enable workflow
+* run workflow
+
+Saídas públicas (RAW):
+
+https://raw.githubusercontent.com/JulioLealDev/bragancabus-feeds/main/data/news.json
+
+https://raw.githubusercontent.com/JulioLealDev/bragancabus-feeds/main/data/events.json
+
+///// Warm Render (Lisbon hours, Mon–Fri)
+
+A cada 10 minutos, em runner hospedado do GitHub, calcula a hora Europe/Lisbon e:
+
+só ping o Render se for segunda a sexta e estiver dentro das janelas:
+
+07:30–09:30
+
+12:00–15:00
+
+17:00–19:00
+
+Endpoint pingado: https://bus-app-backend-gd3a.onrender.com/api/health
+
+Gatilhos: schedule (cron */10) + workflow_dispatch (manual).
+
+Runner: ubuntu-latest (não depende do self-hosted).
