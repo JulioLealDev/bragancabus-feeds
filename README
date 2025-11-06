@@ -27,20 +27,10 @@ https://raw.githubusercontent.com/JulioLealDev/bragancabus-feeds/main/data/news.
 
 https://raw.githubusercontent.com/JulioLealDev/bragancabus-feeds/main/data/events.json
 
-///// Warm Render (Lisbon hours, Mon–Fri)
+///// Warm Render
 
-A cada 10 minutos, em runner hospedado do GitHub, calcula a hora Europe/Lisbon e:
+A cada 7 minutos, em runner hospedado do GitHub, Endpoint pingado: https://bus-app-backend-gd3a.onrender.com/api/health
 
-só ping o Render se for segunda a sexta e estiver dentro das janelas:
-
-07:30–09:30
-
-12:00–15:00
-
-17:00–19:00
-
-Endpoint pingado: https://bus-app-backend-gd3a.onrender.com/api/health
-
-Gatilhos: schedule (cron */10) + workflow_dispatch (manual).
+Gatilhos: schedule (cron */7) + workflow_dispatch (manual).
 
 Runner: ubuntu-latest (não depende do self-hosted).
