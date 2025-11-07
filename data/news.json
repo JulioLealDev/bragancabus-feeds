@@ -1,6 +1,12 @@
 {
-  "fetchedAt": "2025-11-05T15:12:19.393Z",
+  "fetchedAt": "2025-11-07T13:20:21.870Z",
   "items": [
+    {
+      "title": "Primeira Reunião da Câmara Municipal de Bragança define estrutura e áreas de ...",
+      "link": "https://www.cm-braganca.pt/servicos-e-informacoes/noticias/noticia/primeira-reuniao-da-camara-municipal-de-braganca-define-estrutura-e-areas-de-responsabilidade-para-o-novo-mandato",
+      "dateText": "2025/11/05",
+      "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/news/image/4079/1rc_2_1_600_400.jpeg"
+    },
     {
       "title": "XXVI Encontro Internacional de Grupos Corais Cidade de Bragança",
       "link": "https://www.cm-braganca.pt/servicos-e-informacoes/noticias/noticia/xxvi-encontro-internacional-de-grupos-corais-cidade-de-braganca",
@@ -66,12 +72,6 @@
       "link": "https://www.cm-braganca.pt/servicos-e-informacoes/noticias/noticia/braganca-no-xiv-festival-de-la-mascara-zamora-espanha",
       "dateText": "2025/09/29",
       "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/news/image/4067/zamoracaretos_4_1_600_400.jpeg"
-    },
-    {
-      "title": "Dia Mundial do Turismo",
-      "link": "https://www.cm-braganca.pt/servicos-e-informacoes/noticias/noticia/dia-mundial-do-turismo-48",
-      "dateText": "2025/09/27",
-      "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/news/image/4068/dsc02218_1_600_400.jpeg"
     }
   ]
 }
