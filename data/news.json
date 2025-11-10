@@ -1,6 +1,12 @@
 {
-  "fetchedAt": "2025-11-07T13:20:21.870Z",
+  "fetchedAt": "2025-11-10T13:11:36.357Z",
   "items": [
+    {
+      "title": "Inquérito - Silverjobs",
+      "link": "https://www.cm-braganca.pt/servicos-e-informacoes/noticias/noticia/inquerito-silverjobs",
+      "dateText": "2025/11/07",
+      "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/news/image/4080/inquerito_braganca_redessociais_1_600_400.png"
+    },
     {
       "title": "Primeira Reunião da Câmara Municipal de Bragança define estrutura e áreas de ...",
       "link": "https://www.cm-braganca.pt/servicos-e-informacoes/noticias/noticia/primeira-reuniao-da-camara-municipal-de-braganca-define-estrutura-e-areas-de-responsabilidade-para-o-novo-mandato",
@@ -66,12 +72,6 @@
       "link": "https://www.cm-braganca.pt/servicos-e-informacoes/noticias/noticia/edital-n-362-2025-notificacao",
       "dateText": "2025/10/02",
       "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/news/image/4069/edital_1_600_400.jpg"
-    },
-    {
-      "title": "Bragança no \"XIV Festival de La Máscara\" - Zamora (Espanha)",
-      "link": "https://www.cm-braganca.pt/servicos-e-informacoes/noticias/noticia/braganca-no-xiv-festival-de-la-mascara-zamora-espanha",
-      "dateText": "2025/09/29",
-      "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/news/image/4067/zamoracaretos_4_1_600_400.jpeg"
     }
   ]
 }
