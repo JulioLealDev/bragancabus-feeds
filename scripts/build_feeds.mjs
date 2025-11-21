@@ -32,18 +32,39 @@ async function getNews(limit = 12) {
   const html = await fetchHtml(ORIGIN);
   const $ = cheerio.load(html);
   const items = [];
+
   $('ul > li').each((_, li) => {
     const $li = $(li);
     const $a = $li.find('a.linl_overlay').first();
-    const link = TOABS($a.attr('href'), ORIGIN);
-    const title = $li.find('.title .widget_value h2, h2').first().text().trim() || $a.attr('aria-label')?.trim() || '';
-    const dateText = $li.find('.date .widget_value, .dates .widget_value, time').first().text().replace(/\s+/g,' ').trim() || undefined;
+    // href pode vir com tabs/espacos, por isso o trim()
+    const rawHref = $a.attr('href')?.trim();
+    const link = TOABS(rawHref, ORIGIN);
+    const title =
+      $li.find('.title .widget_value h2, h2').first().text().trim() ||
+      $a.attr('aria-label')?.trim() ||
+      '';
+    const dateText =
+      $li
+        .find('.date .widget_value, .dates .widget_value, time')
+        .first()
+        .text()
+        .replace(/\s+/g, ' ')
+        .trim() || undefined;
     const thumb = $li.find('.thumbnail img').first().attr('src');
     const image = TOABS(thumb, ORIGIN);
-    if (title && link) items.push({ title, link, dateText, image });
+
+    // 1) precisa ter título e link
+    if (!title || !link) return;
+
+    // 2) só aceita notícias da secção de notícias
+    if (!/\/transparencia\/comunicacao\/noticias\//.test(link)) return;
+
+    items.push({ title, link, dateText, image });
   });
+
   return { fetchedAt: new Date().toISOString(), items: items.slice(0, limit) };
 }
+
 
 async function getEvents(widgetId = 15, limit = 12) {
   const ORIGIN = 'https://www.cm-braganca.pt/visitar/agenda-de-eventos';
