@@ -1,7 +1,13 @@
 {
   "widgetId": 15,
-  "fetchedAt": "2025-12-01T14:09:36.534Z",
+  "fetchedAt": "2025-12-06T18:56:21.169Z",
   "items": [
+    {
+      "title": "Bragança, Terra Natal e de Sonhos - Atividades Semana 1",
+      "link": "https://www.cm-braganca.pt/transparencia/comunicacao/agenda-de-eventos/evento/braganca-terra-natal-e-de-sonhos-atividades-semana-1",
+      "dateText": "01 a 07 Dez '25",
+      "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/event/image/1402/cartaz_1osemana_1_600_849.jpg"
+    },
     {
       "title": "Passeios Pedestres 2025",
       "link": "https://www.cm-braganca.pt/transparencia/comunicacao/agenda-de-eventos/evento/passeios-pedestres-2025",
@@ -19,6 +25,12 @@
       "link": "https://www.cm-braganca.pt/transparencia/comunicacao/agenda-de-eventos/evento/braganca-terra-natal-e-de-sonhos-84",
       "dateText": "29 Nov '25 a 06 Jan '26",
       "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/event/image/1400/pt_cartaz_a3___btns_25_26_1_600_849.jpg"
+    },
+    {
+      "title": "Exposição | \"Máscaras: Símbolos de Identidade\"",
+      "link": "https://www.cm-braganca.pt/transparencia/comunicacao/agenda-de-eventos/evento/exposicao-mascaras-simbolos-de-identidade",
+      "dateText": "05 Dez '25 a 31 Mar '26",
+      "image": "https://www.cm-braganca.pt/imgcrop/cmbraganca2020/uploads/event/image/1401/sem_titulo_2_1_600_849.jpg"
     }
   ]
 }
